@@ -77,8 +77,6 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
-### Reflection Publisher-1
-
 1. In this case, we don’t really need an interface/trait for Subscriber. The pattern usually uses it to support multiple implementations, but here all subscribers behave the same (just receive HTTP notifications), so a single struct is enough. 
 
 2. Vec is not enough because we need uniqueness and fast access using url as key. Using DashMap makes it easier to insert, delete, and find subscribers without looping through a list.
@@ -86,5 +84,10 @@ This is the place for you to write reflections:
 3. Singleton alone is not enough because it doesn’t guarantee thread safety. Since Rust enforces safe concurrency, DashMap is still needed to safely handle shared data across threads.
 
 #### Reflection Publisher-2
+1. We separate Service and Repository to follow separation of concerns. Repository handles data storage, while Service handles business logic. This makes the code cleaner and easier to maintain instead of putting everything inside Model.
+
+2. If we only use Model, each model would handle too many responsibilities (data + logic + interaction). Program, Subscriber, and Notification would become tightly coupled and harder to manage, making the code more complex and difficult to scale.
+
+3. Postman helps me test endpoints quickly without needing a frontend. I mainly use it to send requests, check responses, and debug errors. Features I find useful are collections (to organize endpoints) and saving requests, which will be helpful for future projects.
 
 #### Reflection Publisher-3
