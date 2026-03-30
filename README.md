@@ -91,3 +91,8 @@ This is the place for you to write reflections:
 3. Postman helps me test endpoints quickly without needing a frontend. I mainly use it to send requests, check responses, and debug errors. Features I find useful are collections (to organize endpoints) and saving requests, which will be helpful for future projects.
 
 #### Reflection Publisher-3
+1. This tutorial uses the push model, because the publisher directly sends notification data to subscribers using HTTP requests.
+
+2. If we use the pull model, subscribers would need to request data themselves. The advantage is it gives more control to subscribers, but it adds extra complexity and delay because they must keep checking for updates.
+
+3. Without multithreading, notifications would be sent sequentially. This would slow down the system, especially if there are many subscribers, because each request has to wait for the previous one to finish.
